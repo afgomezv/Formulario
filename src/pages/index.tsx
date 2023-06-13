@@ -26,7 +26,7 @@ import {
   Town,
 } from "@/components/direction";
 
-import { Grupo, Telefono } from "@/components/others";
+import { Boton, Grupo, Politicas, Telefono } from "@/components/others";
 
 export default function Home() {
   return (
@@ -38,14 +38,14 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Ventana Única</h1>
+        <Politicas />
         <div>
-          <Box my={2}>
+          <Box my={1}>
             <Container>
-              <Card>
+              <Card variant="outlined">
                 <CardContent>
                   <form>
-                    <Grid direction="row" spacing={8}>
+                    <Grid container direction="row" spacing={2}>
                       <Fecha />
                       <Solicitud />
                       <Persona />
@@ -63,6 +63,7 @@ export default function Home() {
                       <Direction />
                       <Telefono />
                       <Grupo />
+                      <Boton />
                     </Grid>
                   </form>
                 </CardContent>

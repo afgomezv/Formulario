@@ -36,8 +36,8 @@ export const Direction = () => {
   };
 
   return (
-    <Grid container direction="row" spacing={2} my={1}>
-      <Grid item xs={6} sm={4} md={2} my={2}>
+    <Grid container direction="row" spacing={2} my={2} mx={0.5}>
+      <Grid item xs={6} sm={2}>
         <FormControl sx={{ width: "100%" }}>
           <InputLabel>Via Principal</InputLabel>
           <Select
@@ -59,7 +59,7 @@ export const Direction = () => {
           <div style={{ color: "red" }}>{errors.streetFirst}</div>
         )} */}
       </Grid>
-      <Grid item xs={6} sm={2} md={1.3} my={1}>
+      <Grid item xs={6} sm={1.5}>
         <TextField
           //error={Boolean(errors.numberFirst)}
           label="Numero"
@@ -67,7 +67,6 @@ export const Direction = () => {
           name="numberFirst"
           value={numeroPrincipal}
           onChange={handleChangeDirection}
-          margin="dense"
           fullWidth
           variant="outlined"
         />
@@ -75,7 +74,7 @@ export const Direction = () => {
           <div style={{ color: "red" }}>{errors.numberFirst}</div>
         )} */}
       </Grid>
-      <Grid item xs={3} sm={2} md={1.3} my={2}>
+      <Grid item xs={3} sm={1}>
         <FormControl sx={{ width: "100%" }}>
           <InputLabel id="solicitud-label">Letra</InputLabel>
           <Select
@@ -93,7 +92,7 @@ export const Direction = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={3} sm={2.5} md={1.5} my={2}>
+      <Grid item xs={3} sm={2}>
         <FormControl sx={{ width: "100%" }}>
           <InputLabel id="solicitud-label">Sentido:</InputLabel>
           <Select
@@ -111,7 +110,7 @@ export const Direction = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={6} sm={2} md={1.3} my={1}>
+      <Grid item xs={6} sm={1.5}>
         <TextField
           //error={Boolean(errors.numberSecond)}
           label="Numero"
@@ -119,7 +118,6 @@ export const Direction = () => {
           name="numberSecond"
           value={numeroSecundario}
           onChange={handleChangeDirection}
-          margin="dense"
           fullWidth
           variant="outlined"
         />
@@ -127,7 +125,7 @@ export const Direction = () => {
           <div style={{ color: "red" }}>{errors.numberSecond}</div>
         )} */}
       </Grid>
-      <Grid item xs={3} sm={2} md={1.3} my={2}>
+      <Grid item xs={3} sm={1}>
         <FormControl sx={{ width: "100%" }}>
           <InputLabel id="solicitud-label">Letra</InputLabel>
           <Select
@@ -145,7 +143,7 @@ export const Direction = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={3} sm={2.5} md={1.5} my={2}>
+      <Grid item xs={3} sm={2}>
         <FormControl sx={{ width: "100%" }}>
           <InputLabel id="solicitud-label">Sentido:</InputLabel>
           <Select
@@ -163,7 +161,7 @@ export const Direction = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={6} sm={1.5} md={1.3} my={1}>
+      <Grid item xs={6} sm={1}>
         <TextField
           //error={Boolean(errors.placa)}
           label="placa"
@@ -171,7 +169,6 @@ export const Direction = () => {
           name="placa"
           value={placa}
           onChange={handleChangeDirection}
-          margin="dense"
           fullWidth
           variant="outlined"
         />
