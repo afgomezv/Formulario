@@ -8,7 +8,7 @@ import { comunaInput } from "@/data";
 import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 
 export const Comuna = () => {
-  const { data, handleChange } = useFormulario();
+  const { data, handleChangeSelect } = useFormulario();
   const { comuna } = data;
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -19,7 +19,7 @@ export const Comuna = () => {
           name="comuna"
           value={comuna}
           label="Comuna"
-          onChange={handleChange}
+          onChange={handleChangeSelect}
         >
           <MenuItem value={""}>Seleccionar...</MenuItem>
           {Array.from(comunaInput).map((item) => (

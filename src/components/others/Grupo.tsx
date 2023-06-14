@@ -8,18 +8,18 @@ import { group } from "@/data";
 import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 
 export const Grupo = () => {
-  const { data, handleChange } = useFormulario();
+  const { data, errors, handleChangeSelect } = useFormulario();
   const { grupo } = data;
   return (
     <Grid item xs={12} sm={6}>
       <FormControl sx={{ width: "100%" }}>
-        <InputLabel>Indique el grupo al que pertenece</InputLabel>
+        <InputLabel>Indique el grupo poblacional al que pertenece</InputLabel>
         <Select
-          //error={Boolean(errors.group)}
+          error={Boolean(errors.grupo)}
           name="grupo"
           value={grupo}
-          label="Indique el grupo al que pertenece"
-          onChange={handleChange}
+          label="Indique el grupo poblacional al que pertenece"
+          onChange={handleChangeSelect}
         >
           <MenuItem value={0}>Seleccionar...</MenuItem>
           {Array.from(group).map((item) => (
@@ -29,7 +29,7 @@ export const Grupo = () => {
           ))}
         </Select>
       </FormControl>
-      {/* {errors.group && <div style={{ color: "red" }}>{errors.group}</div>} */}
+      {errors.grupo && <div style={{ color: "red" }}>{errors.grupo}</div>}
     </Grid>
   );
 };

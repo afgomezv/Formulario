@@ -8,7 +8,7 @@ import { departament } from "@/data";
 import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 
 export const Departament = () => {
-  const { data, handleChange } = useFormulario();
+  const { data, handleChangeSelect } = useFormulario();
   const { departamento } = data;
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -19,7 +19,7 @@ export const Departament = () => {
           name="departamento"
           value={departamento}
           label="Departamento"
-          onChange={handleChange}
+          onChange={handleChangeSelect}
         >
           <MenuItem value={""}>Seleccionar...</MenuItem>
           {departament.map((item) => (

@@ -5,6 +5,6 @@ export const response = [
   },
   {
     id: 2,
-    description: "Fisico",
+    description: "Físico",
   },
 ];

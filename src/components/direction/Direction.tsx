@@ -1,5 +1,10 @@
 //* Context React
+import { useEffect } from "react";
+
+//* React
 import { useFormulario } from "@/contexts/FormContext";
+
+//*Data
 import { directionSense, letters, street } from "@/data";
 
 //*Material Ui
@@ -13,8 +18,8 @@ import {
 } from "@mui/material";
 
 export const Direction = () => {
-  const { data, direction, setDirection, handleChange } = useFormulario();
-  const { direccion } = data;
+  const { data, direction, setDirection, handleChangeInput } = useFormulario();
+
   const {
     viaPrincipal,
     numeroPrincipal,
@@ -27,6 +32,26 @@ export const Direction = () => {
     complemento,
   } = direction;
 
+  let directions =
+    viaPrincipal +
+    " " +
+    numeroPrincipal +
+    letraPrincipal +
+    " " +
+    direccionPrincipal +
+    " " +
+    numeroSecundario +
+    letraSecundaria +
+    " " +
+    direccionSecundaria +
+    "-" +
+    " " +
+    placa +
+    " " +
+    complemento;
+
+  data.direccion = directions;
+
   const handleChangeDirection = (e: any) => {
     const { name, value } = e.target;
     setDirection({
@@ -37,12 +62,12 @@ export const Direction = () => {
 
   return (
     <Grid container direction="row" spacing={2} my={2} mx={0.5}>
-      <Grid item xs={6} sm={2}>
+      <Grid item xs={6} sm={3} md={2}>
         <FormControl sx={{ width: "100%" }}>
           <InputLabel>Via Principal</InputLabel>
           <Select
             //error={Boolean(errors.streetFirst)}
-            name="via principal"
+            name="viaPrincipal"
             value={viaPrincipal}
             label="Via Principal"
             onChange={handleChangeDirection}
@@ -59,12 +84,12 @@ export const Direction = () => {
           <div style={{ color: "red" }}>{errors.streetFirst}</div>
         )} */}
       </Grid>
-      <Grid item xs={6} sm={1.5}>
+      <Grid item xs={6} sm={2.5} md={1.5}>
         <TextField
           //error={Boolean(errors.numberFirst)}
           label="Numero"
           type="number"
-          name="numberFirst"
+          name="numeroPrincipal"
           value={numeroPrincipal}
           onChange={handleChangeDirection}
           fullWidth
@@ -74,11 +99,11 @@ export const Direction = () => {
           <div style={{ color: "red" }}>{errors.numberFirst}</div>
         )} */}
       </Grid>
-      <Grid item xs={3} sm={1}>
+      <Grid item xs={4} sm={2} md={1}>
         <FormControl sx={{ width: "100%" }}>
           <InputLabel id="solicitud-label">Letra</InputLabel>
           <Select
-            name="letterFirst"
+            name="letraPrincipal"
             value={letraPrincipal}
             label="Letra"
             onChange={handleChangeDirection}
@@ -92,11 +117,11 @@ export const Direction = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={3} sm={2}>
+      <Grid item xs={4} sm={3} md={2}>
         <FormControl sx={{ width: "100%" }}>
           <InputLabel id="solicitud-label">Sentido:</InputLabel>
           <Select
-            name="directionFirst"
+            name="direccionPrincipal"
             value={direccionPrincipal}
             label="Sentido"
             onChange={handleChangeDirection}
@@ -110,12 +135,12 @@ export const Direction = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={6} sm={1.5}>
+      <Grid item xs={4} sm={3} md={2}>
         <TextField
           //error={Boolean(errors.numberSecond)}
           label="Numero"
           type="number"
-          name="numberSecond"
+          name="numeroSecundario"
           value={numeroSecundario}
           onChange={handleChangeDirection}
           fullWidth
@@ -125,11 +150,11 @@ export const Direction = () => {
           <div style={{ color: "red" }}>{errors.numberSecond}</div>
         )} */}
       </Grid>
-      <Grid item xs={3} sm={1}>
+      <Grid item xs={4} sm={2} md={2}>
         <FormControl sx={{ width: "100%" }}>
           <InputLabel id="solicitud-label">Letra</InputLabel>
           <Select
-            name="letterSecond"
+            name="letraSecundaria"
             value={letraSecundaria}
             label="Letra"
             onChange={handleChangeDirection}
@@ -143,11 +168,11 @@ export const Direction = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={3} sm={2}>
+      <Grid item xs={4} sm={3} md={2}>
         <FormControl sx={{ width: "100%" }}>
           <InputLabel id="solicitud-label">Sentido:</InputLabel>
           <Select
-            name="directionSecond"
+            name="direccionSecundaria"
             value={direccionSecundaria}
             label="Sentido"
             onChange={handleChangeDirection}
@@ -161,7 +186,7 @@ export const Direction = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={6} sm={1}>
+      <Grid item xs={4} sm={2} md={1}>
         <TextField
           //error={Boolean(errors.placa)}
           label="placa"
@@ -174,12 +199,12 @@ export const Direction = () => {
         />
         {/* {errors.placa && <div style={{ color: "red" }}>{errors.placa}</div>} */}
       </Grid>
-      <Grid item xs={12} sm={6}>
+      <Grid item xs={12} sm={8}>
         <TextField
           error={false}
           label="complemento"
           type="text"
-          name="complement"
+          name="complemento"
           value={complemento}
           onChange={handleChangeDirection}
           fullWidth
@@ -190,9 +215,10 @@ export const Direction = () => {
         <TextField
           error={false}
           type="text"
-          name="direccion"
-          value={direccion}
-          onChange={handleChange}
+          label="Dirección Completa"
+          name="directions"
+          value={directions}
+          onChange={handleChangeInput}
           fullWidth
           variant="outlined"
         />

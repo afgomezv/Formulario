@@ -5,23 +5,21 @@ import { useFormulario } from "@/contexts/FormContext";
 import { Grid, TextField } from "@mui/material";
 
 export const Telefono = () => {
-  const { data, handleChange } = useFormulario();
+  const { data, errors, handleChangeInput } = useFormulario();
   const { telefono } = data;
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Grid item xs={12} sm={6}>
       <TextField
-        //error={Boolean(errors.telephone)}
+        error={Boolean(errors.telefono)}
         label="Teléfono fijo / Celular *"
         type="number"
         name="telefono"
         value={telefono}
-        onChange={handleChange}
+        onChange={handleChangeInput}
         fullWidth
         variant="outlined"
       />
-      {/* {errors.telephone && (
-        <div style={{ color: "red" }}>{errors.telephone}</div>
-      )} */}
+      {errors.telefono && <div style={{ color: "red" }}>{errors.telefono}</div>}
     </Grid>
   );
 };

@@ -5,7 +5,7 @@ import { useFormulario } from "@/contexts/FormContext";
 import { TextField, Grid } from "@mui/material";
 
 export const Entidad = () => {
-  const { data } = useFormulario();
+  const { data, handleChangeInput } = useFormulario();
   const { entidad } = data;
 
   return (
@@ -13,10 +13,11 @@ export const Entidad = () => {
       <TextField
         type="text"
         label="Entidad"
-        name="fecha"
+        name="entidad"
         value={entidad}
         variant="outlined"
         fullWidth
+        onChange={handleChangeInput}
       />
     </Grid>
   );

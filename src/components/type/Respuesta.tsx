@@ -8,18 +8,18 @@ import { response } from "@/data";
 import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 
 export const Respuesta = () => {
-  const { data, handleChange } = useFormulario();
-  const { solicitud } = data;
+  const { data, errors, handleChangeSelect } = useFormulario();
+  const { respuesta } = data;
   return (
     <Grid item xs={12} sm={6} md={4}>
       <FormControl sx={{ width: "100%" }}>
         <InputLabel>Medio de respuesta * </InputLabel>
         <Select
-          //error={Boolean(errors.request)}
-          name="request"
-          value={solicitud}
+          error={Boolean(errors.respuesta)}
+          name="respuesta"
+          value={respuesta}
           label="Medio de respuesta"
-          onChange={handleChange}
+          onChange={handleChangeSelect}
         >
           <MenuItem value={""}>Seleccionar...</MenuItem>
           {Array.from(response).map((item) => (
@@ -29,7 +29,9 @@ export const Respuesta = () => {
           ))}
         </Select>
       </FormControl>
-      {/* {errors.request && <div style={{ color: "red" }}>{errors.request}</div>} */}
+      {errors.respuesta && (
+        <div style={{ color: "red" }}>{errors.respuesta}</div>
+      )}
     </Grid>
   );
 };

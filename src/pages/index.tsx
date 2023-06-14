@@ -1,6 +1,9 @@
 //*Next
 import Head from "next/head";
 
+//*React Context
+import { useFormulario } from "@/contexts/FormContext";
+
 //*Material UI
 import { Box, Card, CardContent, Container, Grid } from "@mui/material";
 
@@ -26,9 +29,10 @@ import {
   Town,
 } from "@/components/direction";
 
-import { Boton, Grupo, Politicas, Telefono } from "@/components/others";
+import { Boton, Grupo, Politicas, Telefono, Texto } from "@/components/others";
 
 export default function Home() {
+  const { handleSubmit } = useFormulario();
   return (
     <>
       <Head>
@@ -44,9 +48,9 @@ export default function Home() {
             <Container>
               <Card variant="outlined">
                 <CardContent>
-                  <form>
+                  <form onSubmit={handleSubmit}>
                     <Grid container direction="row" spacing={2}>
-                      <Fecha />
+                      {!(<Fecha />)}
                       <Solicitud />
                       <Persona />
                       <Documento />
@@ -63,6 +67,7 @@ export default function Home() {
                       <Direction />
                       <Telefono />
                       <Grupo />
+                      <Texto />
                       <Boton />
                     </Grid>
                   </form>

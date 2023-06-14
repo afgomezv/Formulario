@@ -8,18 +8,18 @@ import { document } from "@/data";
 import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 
 export const Documento = () => {
-  const { data, handleChange } = useFormulario();
+  const { data, errors, handleChangeSelect } = useFormulario();
   const { documento } = data;
   return (
     <Grid item xs={12} sm={6} md={4}>
       <FormControl sx={{ width: "100%" }}>
         <InputLabel>Tipo de documento * </InputLabel>
         <Select
-          //error={Boolean(errors.document)}
-          name="document"
+          error={Boolean(errors.documento)}
+          name="documento"
           value={documento}
           label="Tipo de documento"
-          onChange={handleChange}
+          onChange={handleChangeSelect}
         >
           <MenuItem value={""}>Seleccionar...</MenuItem>
           {Array.from(document).map((item) => (
@@ -29,9 +29,9 @@ export const Documento = () => {
           ))}
         </Select>
       </FormControl>
-      {/* {errors.document && (
-      <div style={{ color: "red" }}>{errors.document}</div>
-    )} */}
+      {errors.documento && (
+        <div style={{ color: "red" }}>{errors.documento}</div>
+      )}
     </Grid>
   );
 };

@@ -5,24 +5,22 @@ import { useFormulario } from "@/contexts/FormContext";
 import { Grid, TextField } from "@mui/material";
 
 export const Nombres = () => {
-  const { data, handleChange } = useFormulario();
+  const { data, errors, handleChangeInput } = useFormulario();
   const { nombres } = data;
 
   return (
     <Grid item xs={12} sm={6} md={4}>
       <TextField
-        //error={Boolean(errors.nameComplete)}
+        error={Boolean(errors.nombres)}
         label="Nombres Completos *"
         type="text"
-        name="nameComplete"
+        name="nombres"
         value={nombres}
-        onChange={handleChange}
+        onChange={handleChangeInput}
         fullWidth
         variant="outlined"
       />
-      {/* {errors.nameComplete && (
-        <div style={{ color: "red" }}>{errors.nameComplete}</div>
-      )} */}
+      {errors.nombres && <div style={{ color: "red" }}>{errors.nombres}</div>}
     </Grid>
   );
 };

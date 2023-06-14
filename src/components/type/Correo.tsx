@@ -5,7 +5,7 @@ import { useFormulario } from "@/contexts/FormContext";
 import { Grid, TextField } from "@mui/material";
 
 export const Correo = () => {
-  const { data, handleChange } = useFormulario();
+  const { data, handleChangeInput } = useFormulario();
   const { correo } = data;
 
   return (
@@ -14,9 +14,9 @@ export const Correo = () => {
         //error={Boolean(errors.nameComplete)}
         label="Correo electronico *"
         type="text"
-        name="nameComplete"
+        name="correo"
         value={correo}
-        onChange={handleChange}
+        onChange={handleChangeInput}
         fullWidth
         variant="outlined"
       />

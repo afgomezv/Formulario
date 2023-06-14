@@ -8,7 +8,7 @@ import { municipios } from "@/data";
 import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 
 export const Town = () => {
-  const { data, handleChange } = useFormulario();
+  const { data, handleChangeSelect } = useFormulario();
   const { ciudad } = data;
   return (
     <Grid item xs={12} sm={6} md={4}>
@@ -19,7 +19,7 @@ export const Town = () => {
           name="ciudad"
           value={ciudad}
           label="Ciudad"
-          onChange={handleChange}
+          onChange={handleChangeSelect}
         >
           <MenuItem value={""}>Seleccionar...</MenuItem>
           {municipios.map((item, index) => (
