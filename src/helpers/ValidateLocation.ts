@@ -1,7 +1,7 @@
-import { Data, ErrorLocation } from "@/interface";
+import { Data, Errors } from "@/interface";
 
 export const ValidationLocation = (data: Data) => {
-  let errors: ErrorLocation = {};
+  let errors: Errors = {};
 
   if (!data.barrio.trim()) {
     errors.barrio = "El barrio es requerido";

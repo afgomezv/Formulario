@@ -18,7 +18,8 @@ import {
 } from "@mui/material";
 
 export const Direction = () => {
-  const { data, direction, setDirection, handleChangeInput } = useFormulario();
+  const { data, direction, setDirection, errorsDir, handleChangeInput } =
+    useFormulario();
 
   const {
     viaPrincipal,
@@ -66,7 +67,7 @@ export const Direction = () => {
         <FormControl sx={{ width: "100%" }}>
           <InputLabel>Via Principal</InputLabel>
           <Select
-            //error={Boolean(errors.streetFirst)}
+            error={Boolean(errorsDir.viaPrincipal)}
             name="viaPrincipal"
             value={viaPrincipal}
             label="Via Principal"
@@ -80,13 +81,13 @@ export const Direction = () => {
             ))}
           </Select>
         </FormControl>
-        {/* {errors.streetFirst && (
-          <div style={{ color: "red" }}>{errors.streetFirst}</div>
-        )} */}
+        {errorsDir.viaPrincipal && (
+          <div style={{ color: "red" }}>{errorsDir.viaPrincipal}</div>
+        )}
       </Grid>
-      <Grid item xs={6} sm={2.5} md={1.5}>
+      <Grid item xs={4} sm={3} md={2}>
         <TextField
-          //error={Boolean(errors.numberFirst)}
+          error={Boolean(errorsDir.numeroPrincipal)}
           label="Numero"
           type="number"
           name="numeroPrincipal"
@@ -95,11 +96,11 @@ export const Direction = () => {
           fullWidth
           variant="outlined"
         />
-        {/* {errors.numberFirst && (
-          <div style={{ color: "red" }}>{errors.numberFirst}</div>
-        )} */}
+        {errorsDir.numeroPrincipal && (
+          <div style={{ color: "red" }}>{errorsDir.numeroPrincipal}</div>
+        )}
       </Grid>
-      <Grid item xs={4} sm={2} md={1}>
+      <Grid item xs={4} sm={2} md={2}>
         <FormControl sx={{ width: "100%" }}>
           <InputLabel id="solicitud-label">Letra</InputLabel>
           <Select
@@ -137,7 +138,7 @@ export const Direction = () => {
       </Grid>
       <Grid item xs={4} sm={3} md={2}>
         <TextField
-          //error={Boolean(errors.numberSecond)}
+          error={Boolean(errorsDir.numeroSecundario)}
           label="Numero"
           type="number"
           name="numeroSecundario"
@@ -146,9 +147,9 @@ export const Direction = () => {
           fullWidth
           variant="outlined"
         />
-        {/* {errors.numberSecond && (
-          <div style={{ color: "red" }}>{errors.numberSecond}</div>
-        )} */}
+        {errorsDir.numeroSecundario && (
+          <div style={{ color: "red" }}>{errorsDir.numeroSecundario}</div>
+        )}
       </Grid>
       <Grid item xs={4} sm={2} md={2}>
         <FormControl sx={{ width: "100%" }}>
@@ -186,9 +187,9 @@ export const Direction = () => {
           </Select>
         </FormControl>
       </Grid>
-      <Grid item xs={4} sm={2} md={1}>
+      <Grid item xs={4} sm={3} md={2}>
         <TextField
-          //error={Boolean(errors.placa)}
+          error={Boolean(errorsDir.placa)}
           label="placa"
           type="number"
           name="placa"
@@ -197,9 +198,11 @@ export const Direction = () => {
           fullWidth
           variant="outlined"
         />
-        {/* {errors.placa && <div style={{ color: "red" }}>{errors.placa}</div>} */}
+        {errorsDir.placa && (
+          <div style={{ color: "red" }}>{errorsDir.placa}</div>
+        )}
       </Grid>
-      <Grid item xs={12} sm={8}>
+      <Grid item xs={12} sm={6}>
         <TextField
           error={false}
           label="complemento"

@@ -1,6 +1,8 @@
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
+import { useRouter } from "next/router";
 
 export const Politicas = () => {
+  const router = useRouter();
   const openPopup = () => {
     const width = window.innerWidth;
     const height = window.innerHeight;
@@ -9,6 +11,10 @@ export const Politicas = () => {
       "popupWindow",
       `width=${width},height=${height},scrollbars=yes`
     );
+  };
+
+  const getDirection = () => {
+    router.push("/framerPage");
   };
 
   return (

@@ -5,14 +5,14 @@ import { useFormulario } from "@/contexts/FormContext";
 import { Grid, TextField } from "@mui/material";
 
 export const Correo = () => {
-  const { data, handleChangeInput } = useFormulario();
+  const { data, errorsEmail, handleChangeInput } = useFormulario();
   const { correo } = data;
 
   return (
     <Grid item xs={12} sm={6} md={4}>
       <TextField
-        //error={Boolean(errors.nameComplete)}
-        label="Correo electronico *"
+        error={Boolean(errorsEmail.correo)}
+        label="Correo electronico "
         type="text"
         name="correo"
         value={correo}
@@ -20,9 +20,9 @@ export const Correo = () => {
         fullWidth
         variant="outlined"
       />
-      {/* {errors.nameComplete && (
-      <div style={{ color: "red" }}>{errors.nameComplete}</div>
-    )} */}
+      {errorsEmail.correo && (
+        <div style={{ color: "red" }}>{errorsEmail.correo}</div>
+      )}
     </Grid>
   );
 };

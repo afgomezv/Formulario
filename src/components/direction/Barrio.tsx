@@ -8,14 +8,14 @@ import { comunaInput } from "@/data";
 import { FormControl, Grid, InputLabel, MenuItem, Select } from "@mui/material";
 
 export const Barrio = () => {
-  const { data, handleChangeInput, handleChangeSelect } = useFormulario();
+  const { data, errorsLoc, handleChangeSelect } = useFormulario();
   const { barrio } = data;
   return (
     <Grid item xs={12} sm={6} md={4}>
       <FormControl sx={{ width: "100%" }}>
         <InputLabel>Barrio</InputLabel>
         <Select
-          //error={Boolean(errors.request)}
+          error={Boolean(errorsLoc.comuna)}
           name="barrio"
           value={barrio}
           label="Barrio"
@@ -29,7 +29,9 @@ export const Barrio = () => {
           ))}
         </Select>
       </FormControl>
-      {/* {errors.request && <div style={{ color: "red" }}>{errors.request}</div>} */}
+      {errorsLoc.comuna && (
+        <div style={{ color: "red" }}>{errorsLoc.comuna}</div>
+      )}
     </Grid>
   );
 };

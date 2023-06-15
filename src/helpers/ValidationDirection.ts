@@ -15,5 +15,9 @@ export const ValidationDirection = (direction: Direction) => {
     errors.numeroSecundario = "El número es requerido";
   }
 
+  if (!direction.placa.trim()) {
+    errors.placa = "La placa es requerida";
+  }
+
   return errors;
 };

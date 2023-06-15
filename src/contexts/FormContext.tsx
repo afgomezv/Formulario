@@ -11,15 +11,10 @@ import {
 } from "react";
 
 //*Interface
-import {
-  Data,
-  Direction,
-  ErrorDirection,
-  ErrorLocation,
-  Errors,
-} from "@/interface";
+import { Data, Direction, ErrorDirection, Errors } from "@/interface";
 import { SelectChangeEvent } from "@mui/material";
 import {
+  ValidationCorreo,
   ValidationDirection,
   ValidationLocation,
   getDate,
@@ -30,6 +25,9 @@ export interface FormProps {
   data: Data;
   direction: Direction;
   errors: Errors;
+  errorsDir: ErrorDirection;
+  errorsLoc: Errors;
+  errorsEmail: Errors;
   setDirection: Dispatch<
     SetStateAction<{
       viaPrincipal: string;
@@ -57,7 +55,9 @@ export const FormContext = createContext<FormProps>({} as FormProps);
 export const FormProvider = ({ children }: any) => {
   const [errors, setErrors] = useState<Errors>({});
   const [errorsDir, setErrorsDir] = useState<ErrorDirection>({});
-  const [errorsLoc, setErrorsLoc] = useState<ErrorLocation>({});
+  const [errorsLoc, setErrorsLoc] = useState<Errors>({});
+  const [errorsEmail, setErrorsEmail] = useState<Errors>({});
+  const [isActive, setActive] = useState<Boolean>(false);
   const [data, setData] = useState<Data>({
     fecha: getDate(),
     solicitud: "",
@@ -119,16 +119,21 @@ export const FormProvider = ({ children }: any) => {
 
     if (Object.keys(errors).length === 0) {
       if (data.respuesta === "Físico") {
-        const errorsDir = ValidationDirection(direction);
         const errorsLoc = ValidationLocation(data);
-        setErrorsDir(errorsDir);
+        const errorsDir = ValidationDirection(direction);
         setErrorsLoc(errorsLoc);
+        setErrorsDir(errorsDir);
+
         if (
           Object.keys(errorsDir).length === 0 &&
           Object.keys(errorsLoc).length === 0
         ) {
-          console.log("Estoy Aquí");
+          console.log("estoy validado la dirección");
         }
+      } else {
+        const errorsEmail = ValidationCorreo(data);
+        setErrorsEmail(errorsEmail);
+        console.log("Estoy validado el correo electronico");
       }
     }
   };
@@ -139,6 +144,9 @@ export const FormProvider = ({ children }: any) => {
         data,
         direction,
         errors,
+        errorsLoc,
+        errorsDir,
+        errorsEmail,
         setDirection,
         handleChangeSelect,
         handleChangeInput,
