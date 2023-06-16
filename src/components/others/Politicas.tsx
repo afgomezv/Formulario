@@ -55,7 +55,7 @@ export const Politicas = () => {
         <Button
           variant="contained"
           size="large"
-          onClick={openPopup}
+          onClick={getDirection}
           style={{ backgroundColor: "#00821d" }}
         >
           politicas de tratamiento de datos personales

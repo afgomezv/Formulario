@@ -4,8 +4,8 @@ const nextConfig = {
   async rewrites() {
     return [
       {
-        source: "/pdf/:path*",
-        destination: "/public/pdf/:path*",
+        source: "/pdfs/:path*",
+        destination: "/public/pdfs/:path*",
       },
     ];
   },

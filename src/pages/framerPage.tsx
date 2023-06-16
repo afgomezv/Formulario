@@ -2,7 +2,8 @@ import { PdfViewer } from "@/components/others";
 import Head from "next/head";
 
 const FramerPage = () => {
-  const pdfPath = "/pdfs/hooks.pdf";
+  const url = "/pdfs/hooks.pdf";
+  const url2 = "/pdfs/autorizacion_proteccion_datos.pdf";
   return (
     <>
       <Head>
@@ -13,7 +14,7 @@ const FramerPage = () => {
       </Head>
       <main>
         <h1>Pdf Viewer</h1>
-        <PdfViewer pdfPath={pdfPath} />
+        <PdfViewer url={url2} />
       </main>
     </>
   );
